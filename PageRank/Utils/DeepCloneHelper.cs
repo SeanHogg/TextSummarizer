@@ -46,22 +46,26 @@ namespace PageRank
         /// <returns>Return the deep clone.</returns>
         public T Clone<T>()
         {
-            return (T)DeepCopy<T>(_desireObjectToBeCloned);
+            return (T)DeepCopy<T>((T)_desireObjectToBeCloned);
             //return (T)DeepClone(_desireObjectToBeCloned);
         }
 
         #endregion public Method Clone
 
-        public T DeepCopy<T>(object obj)
+        public T DeepCopy<T>(T obj)
         {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, obj);
-                stream.Position = 0;
 
-                return (T)formatter.Deserialize(stream);
-            }
+            var serialized = System.Text.Json.JsonSerializer.Serialize(obj, new System.Text.Json.JsonSerializerOptions()
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                WriteIndented = false,
+                Converters = {
+            new System.Text.Json.Serialization.JsonStringEnumConverter()
+        },
+                IncludeFields = true
+            });
+
+            return System.Text.Json.JsonSerializer.Deserialize<T>(serialized);
         }
 
         /// <summary>
