@@ -1,13 +1,15 @@
-## FORK
-This is a fork of the [Original Project](https://github.com/ebenso/TextSummarizer).
+[![.NET](https://github.com/SeanHogg/TextSummarizer/actions/workflows/dotnet.yml/badge.svg)](https://github.com/SeanHogg/TextSummarizer/actions/workflows/dotnet.yml)
+
+# FORK
+This is a fork of the [Original Project - TextSummarizer](https://github.com/ebenso/TextSummarizer).
+## Differences 
+- Upgraded to .Net 8
+- Fixed Bugs
 
 
 # TextSummarizer
 This is the C# implementation of Automatic TextSummarization and keyword extraction based on TextRank algorithm [1]. The original paper can be found [here](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf). This project came out as an intiative to improve the open-source library for C# and is inspired by one of the popular TextRank implementations for [Python](https://github.com/davidadamojr/TextRank).
 
-# Differences 
-- Upgraded to .Net 8
-- Fixed Bugs
 
 
 # References
